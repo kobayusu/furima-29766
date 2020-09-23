@@ -11,7 +11,7 @@
 ｜ first_name  ｜ string ｜ null: false ｜
 ｜ family_kana ｜ string ｜ null: false ｜
 ｜ first_kana  ｜ string ｜ null: false ｜
-｜ birth_day   ｜ string ｜ null: false ｜
+｜ birth_day   ｜ date   ｜ null: false ｜
 
 ### Association
 
@@ -27,42 +27,42 @@
 ｜ price          ｜ integer    ｜ null: false                    ｜
 ｜ image          ｜ string     ｜ null: false                    ｜
 ｜ deliverry_date ｜ string     ｜ null: false                    ｜
-｜ shipping       ｜ string     ｜ null: false                    ｜
-｜ condition      ｜ string     ｜ null: false                    ｜
-｜ category       ｜ string     ｜ null: false                    ｜
-｜ prefecture     ｜ string     ｜ null: false                    ｜
-｜ users          ｜ references ｜ null: false, foreign_key: true ｜
+｜ shipping       ｜ integer    ｜ null: false                    ｜
+｜ condition      ｜ integer    ｜ null: false                    ｜
+｜ category       ｜ integer    ｜ null: false                    ｜
+｜ prefecture     ｜ integer    ｜ null: false                    ｜
+｜ user           ｜ references ｜ null: false                    ｜
 
 ### Association
 
-- belongs_to :users
-- has_one :orders
+- belongs_to :user
+- has_one :order
 
 ## oders テーブル
 
 ｜ Column      ｜ Type       ｜ Options                        ｜
 ｜ ----------- ｜ ---------- ｜ ------------------------------ ｜
-｜ items       ｜ references ｜ null: false, foreign_key: true ｜
-｜ users       ｜ references ｜ null: false, foreign_key: true ｜
+｜ item        ｜ references ｜ null: false, foreign_key: true ｜
+｜ user        ｜ references ｜ null: false, foreign_key: true ｜
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
-- has_one :destinations
+- belongs_to :user
+- belongs_to :item
+- has_one :destination
 
-## destinations
+## destinations テーブル
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
 | post_number | integer    | null: false                    |
-| prefecture  | string     | null: false                    |
+| prefecture  | integer    | null: false                    |
 | city        | string     | null: false                    |
 | address     | string     | null: false                    |
 | building    | string     | null: false                    |
-| phon_number | integer    | null: false                    |
-| oders       | references | null: false, foreign_key: true |
+| phon_number | string     | null: false                    |
+| oder        | references | null: false, foreign_key: true |
 
-### Association
+### Association　
 
-- belongs_to :orders
+- belongs_to :order
