@@ -31,6 +31,7 @@
 | category_id       | integer    | null: false                    |
 | prefecture_id     | integer    | null: false                    |
 | user              | references | null: false                    |
+| image             | string     | null: false                    |
 
 ### Association
 - belongs_to :user
