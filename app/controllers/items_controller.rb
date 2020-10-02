@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
 
   def index
-    @items = Item.order('created_at DESC')
+    @items = Item.order('id DESC')
   end
 
   def new
@@ -44,6 +44,4 @@ class ItemsController < ApplicationController
       :category_id, :prefecture_id, :image
     ).merge(user_id: current_user.id)
   end
-
-  
 end

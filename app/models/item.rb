@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :category, :condition, :postage_id, :shipping_day_id, :prefecture_id
+  belongs_to_active_hash :category, :postage_id
   belongs_to :user
   has_one :order
   has_one_attached :image
@@ -9,7 +9,7 @@ class Item < ApplicationRecord
             :shipping_day_id, :condition_id, :category_id,
             :prefecture_id, :user, :image, presence: true
 
-  validates :category_id, :condition_id,
-            :postage_id, :shipping_day_id,
-            :prefecture_id, numericality: { other_than: 1 }
+  with_options numericality: { other_than: 1 } do
+    validates :category_id, :condition_id, :postage_id, :shipping_day_id, :prefecture_id
+  end
 end
