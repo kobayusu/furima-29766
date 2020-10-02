@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :category, :condition, :postage_id, :shipping_day_id, :prefecture_id
   belongs_to :user
   has_one :order
+  has_one_attached :image
 
   validates :name, :explanation, :price, :postage_id,
             :shipping_day_id, :condition_id, :category_id,
