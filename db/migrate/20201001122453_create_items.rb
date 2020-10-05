@@ -10,7 +10,6 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer    :category_id,     null: false
       t.integer    :prefecture_id,   null: false
       t.references :user,            null: false
-      t.string     :image,           null: false
       t.timestamps
     end
   end
