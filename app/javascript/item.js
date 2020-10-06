@@ -11,8 +11,7 @@ function price(){
       add_tax.textContent = fee;
       profit.textContent = gains;
    }else {
-      let fee = '-';
-      let gains = '-';
+      let fee = '-',gains = '-';
       add_tax.textContent = fee;
       profit.textContent = gains; 
    }
