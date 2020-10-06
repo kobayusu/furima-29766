@@ -11,10 +11,9 @@ function price(){
       add_tax.textContent = fee;
       profit.textContent = gains;
    }else {
-      let fee = '-',gains = '-';
-      add_tax.textContent = fee;
-      profit.textContent = gains; 
+      add_tax.textContent = '-';
+      profit.textContent = '-'; 
    }
   });
 }
-setInterval(price, 1000);
+window.addEventListener('load',price)
