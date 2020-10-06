@@ -14,6 +14,7 @@ RSpec.describe User, type: :model do
       @user.password_confirmation = 'aaa111'
       expect(@user).to be_valid
     end
+
     # 登録できないとき
     it 'nicknameが空だと登録できない' do
       @user.nickname = ''
