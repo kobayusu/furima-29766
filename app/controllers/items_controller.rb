@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
+  before_action :set_item, only: [:destroy, :show]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -19,6 +20,9 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    return redirect_to root_path if @item.destroy
+
+    render :show
   end
 
   def edit
@@ -28,7 +32,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   private
@@ -43,5 +46,9 @@ class ItemsController < ApplicationController
       :shipping_day_id, :condition_id,
       :category_id, :prefecture_id, :image
     ).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
