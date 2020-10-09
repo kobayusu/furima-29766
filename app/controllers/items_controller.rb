@@ -20,8 +20,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id])
-    if @item.valid?
-      @item.destroy
+    if　@item.destroy?
       return redirect_to root_path
     end
     render :show
