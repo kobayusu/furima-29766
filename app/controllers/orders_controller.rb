@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
-    @order = Order.new
+    @order = OrderDestination.new
   end
 
   def new
@@ -12,13 +12,14 @@ class OrdersController < ApplicationController
   end
 
   def create
+    binding.pry
     @order = OrderDestination.new(order_params)
     if @order.valid?
       pay_item
       @order.save
       return redirect_to root_path
     else
-      render 'index'
+      render　:index
     end
   end
 
