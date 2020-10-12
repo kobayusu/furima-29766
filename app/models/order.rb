@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  validates :user, :item, presence: true
+  has_one :destination
   belongs_to :user
   belongs_to :item
 end
