@@ -1,4 +1,3 @@
-
 FactoryBot.define do
   factory :order_destination do
     token                          { 'tok_abcdefghijk00000000000000000' }

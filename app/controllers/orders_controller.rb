@@ -12,14 +12,13 @@ class OrdersController < ApplicationController
   end
 
   def create
-    binding.pry
     @order = OrderDestination.new(order_params)
     if @order.valid?
       pay_item
       @order.save
-      return redirect_to root_path
+      redirect_to root_path
     else
-      render　:index
+      render :index
     end
   end
 
@@ -31,14 +30,14 @@ class OrdersController < ApplicationController
 
   def move_to_index
     @item = Item.find(params[:item_id])
-      # URLを直接入力して購入済み商品の購入ページへ遷移しようとすると、トップページに遷移すること
+    # URLを直接入力して購入済み商品の購入ページへ遷移しようとすると、トップページに遷移すること
     if current_user.id == @item.user_id || @item.order.present?
       redirect_to root_path
     end
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] 
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price, # 商品の値段
       card: order_params[:token], # カードトークン
