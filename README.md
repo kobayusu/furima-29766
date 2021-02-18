@@ -8,6 +8,10 @@
 
 # http://54.64.38.64/
 
+# basic認証
+  ID   test
+  pass password
+
 # テスト用アカウント
   購入者用
   メールアドレス: test1@mail.com
